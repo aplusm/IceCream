@@ -1,9 +1,9 @@
 //
 //  Dog.swift
-//  IceCream_Example
+//  Example
 //
-//  Created by 蔡越 on 23/10/2017.
-//  Copyright © 2017 CocoaPods. All rights reserved.
+//  Created by 蔡越 on 02/01/2018.
+//  Copyright © 2018 Nanjing University. All rights reserved.
 //
 
 import Foundation

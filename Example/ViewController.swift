@@ -1,9 +1,9 @@
 //
 //  ViewController.swift
-//  IceCream
+//  Example
 //
-//  Created by 蔡越 on 10/17/2017.
-//  Copyright (c) 2017 Nanjing University. All rights reserved.
+//  Created by 蔡越 on 02/01/2018.
+//  Copyright © 2018 Nanjing University. All rights reserved.
 //
 
 import UIKit
@@ -111,6 +111,6 @@ extension ViewController: UITableViewDataSource {
         cell?.textLabel?.text = dogs[indexPath.row].name + "Age: \(dogs[indexPath.row].age)"
         return cell ?? UITableViewCell()
     }
-
+    
 }
 

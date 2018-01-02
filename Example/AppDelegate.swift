@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  IceCream
+//  Example
 //
-//  Created by 蔡越 on 10/17/2017.
-//  Copyright (c) 2017 Nanjing University. All rights reserved.
+//  Created by 蔡越 on 02/01/2018.
+//  Copyright © 2018 Nanjing University. All rights reserved.
 //
 
 import UIKit
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let notification = CKNotification(fromRemoteNotificationDictionary: dict)
         
         if (notification.subscriptionID == IceCreamConstant.cloudKitSubscriptionID) {
-             NotificationCenter.default.post(name: Notifications.cloudKitDataDidChangeRemotely.name, object: nil, userInfo: userInfo)
+            NotificationCenter.default.post(name: Notifications.cloudKitDataDidChangeRemotely.name, object: nil, userInfo: userInfo)
         }
         completionHandler(.newData)
         
@@ -42,7 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
         
         // How about fetching changes here?
-        
     }
 }
 
