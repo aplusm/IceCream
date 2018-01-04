@@ -17,10 +17,6 @@ env:
   matrix:
     - DESTINATION="platform=iOS Simulator,name=iPhone 8,OS=11.1"
 script:
-  - xcodebuild clean build test
-    -project "$PROJECT"
-    -scheme "$SCHEME"
-    -sdk "$SDK"
-    -destination "$DESTINATION"
-    -configuration Debug
+    - set -o pipefail && xcodebuild -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty -c
+
 
