@@ -1,0 +1,26 @@
+# references:
+# * http://www.objc.io/issue-6/travis-ci.html
+# * https://github.com/supermarin/xcpretty#usage
+
+osx_image: xcode9.1
+
+language: swift
+
+sudo: required
+
+env:
+  global:
+    - PROJECT="Example.xcodeproj"
+    - SCHEME="Example"
+    - SDK=iphonesimulator11.1
+    - FRAMEWORK="IceCream"
+  matrix:
+    - DESTINATION="platform=iOS Simulator,name=iPhone 8,OS=11.1"
+script:
+  - xcodebuild clean build test
+    -project "$PROJECT"
+    -scheme "$SCHEME"
+    -sdk "$SDK"
+    -destination "$DESTINATION"
+    -configuration Debug
+
