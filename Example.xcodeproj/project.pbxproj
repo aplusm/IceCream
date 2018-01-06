@@ -21,6 +21,10 @@
 		676BEA561FFBDCDA00FBC26F /* Cream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676BEA511FFBDCDA00FBC26F /* Cream.swift */; };
 		676BEA611FFBDDB900FBC26F /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676BEA601FFBDDB900FBC26F /* Dog.swift */; };
 		676BEA641FFBE31100FBC26F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 676BEA631FFBE31100FBC26F /* CloudKit.framework */; };
+		67DB84582000C22D00C7D88B /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67DB84572000C22D00C7D88B /* RxRealm.framework */; };
+		67DB845A2000C23200C7D88B /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67DB84592000C23200C7D88B /* RealmSwift.framework */; };
+		67DB845C2000C23600C7D88B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67DB845B2000C23600C7D88B /* RxSwift.framework */; };
+		67DB84612000C2B500C7D88B /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67DB84602000C2B500C7D88B /* Realm.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +69,11 @@
 		676BEA601FFBDDB900FBC26F /* Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
 		676BEA621FFBE30500FBC26F /* Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Example.entitlements; sourceTree = "<group>"; };
 		676BEA631FFBE31100FBC26F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		67DB84572000C22D00C7D88B /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = Carthage/Build/iOS/RxRealm.framework; sourceTree = "<group>"; };
+		67DB84592000C23200C7D88B /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		67DB845B2000C23600C7D88B /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		67DB845D2000C23A00C7D88B /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		67DB84602000C2B500C7D88B /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +83,10 @@
 			files = (
 				676BEA361FFBC2EF00FBC26F /* IceCream.framework in Frameworks */,
 				676BEA641FFBE31100FBC26F /* CloudKit.framework in Frameworks */,
+				67DB845C2000C23600C7D88B /* RxSwift.framework in Frameworks */,
+				67DB84612000C2B500C7D88B /* Realm.framework in Frameworks */,
+				67DB845A2000C23200C7D88B /* RealmSwift.framework in Frameworks */,
+				67DB84582000C22D00C7D88B /* RxRealm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +150,11 @@
 		676BEA571FFBDCF500FBC26F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				67DB84602000C2B500C7D88B /* Realm.framework */,
+				67DB845D2000C23A00C7D88B /* RxCocoa.framework */,
+				67DB845B2000C23600C7D88B /* RxSwift.framework */,
+				67DB84592000C23200C7D88B /* RealmSwift.framework */,
+				67DB84572000C22D00C7D88B /* RxRealm.framework */,
 				676BEA631FFBE31100FBC26F /* CloudKit.framework */,
 			);
 			name = Frameworks;
@@ -164,6 +182,7 @@
 				676BEA121FFBC16900FBC26F /* Frameworks */,
 				676BEA131FFBC16900FBC26F /* Resources */,
 				676BEA3B1FFBC2EF00FBC26F /* Embed Frameworks */,
+				67DB845F2000C24500C7D88B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -262,6 +281,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		67DB845F2000C24500C7D88B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxRealm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		676BEA111FFBC16900FBC26F /* Sources */ = {
