@@ -2,17 +2,20 @@
 # * http://www.objc.io/issue-6/travis-ci.html
 # * https://github.com/supermarin/xcpretty#usage
 
-osx_image: xcode9.1
-
 language: swift
-
-sudo: required
-
+osx_image: xcode9.1
+xcode_project: Example
+xcode_scheme: Example
+xcode_sdk: iphonesimulator11.1
+env:
+  global:
+    - FRAMEWORK_NAME=IceCream
 before_install:
-- brew update
-- brew outdated carthage || brew upgrade carthage
-
+  - brew update
+  - brew outdated carthage || brew upgrade carthage
+before_script:
+  - carhage bootstrap
 script:
-- carthage update
+  - carthage build --no-skip-current
 
 
