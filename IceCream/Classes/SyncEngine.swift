@@ -524,13 +524,13 @@ extension SyncEngine {
             guard error == nil else { return }
             guard let ids = opeIDs else { return }
             for id in ids {
-                container.fetchLongLivedOperation(withID: id, completionHandler: { (ope, error) in
+                self.container.fetchLongLivedOperation(withID: id, completionHandler: { (ope, error) in
                     guard error == nil else { return }
                     if let modifyOp = ope as? CKModifyRecordsOperation {
                         modifyOp.modifyRecordsCompletionBlock = { (_,_,_) in
                             print("Resume modify records success!")
                         }
-                        container.add(modifyOp)
+                        self.container.add(modifyOp)
                     }
                 })
             }
