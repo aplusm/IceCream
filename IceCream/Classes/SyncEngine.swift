@@ -43,16 +43,20 @@ public final class SyncEngine<T: Object & CKRecordConvertible & CKRecordRecovera
     private var notificationToken: NotificationToken?
     
 //    fileprivate var changedRecordZoneID: CKRecordZoneID?
-    
+
+  let container: CKContainer!
+
     /// Indicates the private database in default container
-    private let privateDatabase = CKContainer.default().privateCloudDatabase
+    private let privateDatabase = container.privateCloudDatabase
     
     private let errorHandler = ErrorHandler()
     
     /// We recommand process the initialization when app launches
-    public init() {
+  public init(container: CKContainer = CKContainer.default()) {
+
+      self.container = container
         /// Check iCloud status so that we can go on
-        CKContainer.default().accountStatus { [weak self] (status, error) in
+        container.accountStatus { [weak self] (status, error) in
             guard let `self` = self else { return }
             if status == CKAccountStatus.available {
                 
@@ -517,17 +521,17 @@ extension SyncEngine {
     /// 3. Back to app again
     /// The operation resumes! All works like a magic!
     fileprivate func resumeLongLivedOperationIfPossible () {
-        CKContainer.default().fetchAllLongLivedOperationIDs { ( opeIDs, error) in
+        container.fetchAllLongLivedOperationIDs { ( opeIDs, error) in
             guard error == nil else { return }
             guard let ids = opeIDs else { return }
             for id in ids {
-                CKContainer.default().fetchLongLivedOperation(withID: id, completionHandler: { (ope, error) in
+                container.fetchLongLivedOperation(withID: id, completionHandler: { (ope, error) in
                     guard error == nil else { return }
                     if let modifyOp = ope as? CKModifyRecordsOperation {
                         modifyOp.modifyRecordsCompletionBlock = { (_,_,_) in
                             print("Resume modify records success!")
                         }
-                        CKContainer.default().add(modifyOp)
+                        container.add(modifyOp)
                     }
                 })
             }
