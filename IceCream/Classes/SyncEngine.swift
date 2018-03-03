@@ -44,17 +44,16 @@ public final class SyncEngine<T: Object & CKRecordConvertible & CKRecordRecovera
     
 //    fileprivate var changedRecordZoneID: CKRecordZoneID?
 
-  let container: CKContainer!
-
-    /// Indicates the private database in default container
-    private let privateDatabase = container.privateCloudDatabase
+  private let container: CKContainer!
+  private let privateDatabase: CKDatabase!
     
     private let errorHandler = ErrorHandler()
     
     /// We recommand process the initialization when app launches
   public init(container: CKContainer = CKContainer.default()) {
 
-      self.container = container
+    self.container = container
+    self.privateDatabase = container.privateCloudDatabase
         /// Check iCloud status so that we can go on
         container.accountStatus { [weak self] (status, error) in
             guard let `self` = self else { return }
