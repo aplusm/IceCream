@@ -52,7 +52,9 @@ extension CKRecordRecoverable {
             default:
                 print("Other types will be supported in the future.")
             }
-            o.setValue(recordValue, forKey: prop.name)
+          if let value = recordValue {
+            o.setValue(value, forKey: prop.name)
+          }
         }
         return o
     }
