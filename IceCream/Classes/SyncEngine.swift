@@ -292,7 +292,9 @@ extension SyncEngine {
                 print("There is something wrong with the converson from cloud record to local object")
                 return
             }
-            object.finalizeParsing()
+
+            (object as? T)?.finalizeParsing()
+
             DispatchQueue.main.async {
                 let realm = try! Realm()
 
