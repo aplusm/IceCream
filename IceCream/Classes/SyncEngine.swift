@@ -293,9 +293,8 @@ extension SyncEngine {
                 return
             }
 
-            (object as? T)?.finalizeParsing()
-
             DispatchQueue.main.async {
+                (object as? T)?.finalizeParsing()
                 let realm = try! Realm()
 
                 /// If your model class includes a primary key, you can have Realm intelligently update or add objects based off of their primary key values using Realm().add(_:update:).
