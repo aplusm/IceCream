@@ -10,6 +10,7 @@ import CloudKit
 import RealmSwift
 
 public protocol CKRecordConvertible {
+    public func finalizeParsing()
     static var recordType: String { get }
     static var customZoneID: CKRecordZoneID { get }
     
