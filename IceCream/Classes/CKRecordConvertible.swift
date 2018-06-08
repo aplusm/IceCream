@@ -10,7 +10,7 @@ import CloudKit
 import RealmSwift
 
 public protocol CKRecordConvertible {
-    public func finalizeParsing()
+  func finalizeParsing()
     static var recordType: String { get }
     static var customZoneID: CKRecordZoneID { get }
     
@@ -56,7 +56,7 @@ extension CKRecordRecoverable {
           if let value = recordValue {
             o.setValue(value, forKey: prop.name)
           }
-        }
+        }      
         return o
     }
 }

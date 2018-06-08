@@ -288,11 +288,11 @@ extension SyncEngine {
             /// The Cloud will return the modified record since the last zoneChangesToken, we need to do local cache here.
             /// Handle the record:
             guard let `self` = self else { return }
-            guard let object = T().parseFromRecord(record: record)  else {
+            guard var object = T().parseFromRecord(record: record)  else {
                 print("There is something wrong with the converson from cloud record to local object")
                 return
             }
-
+            object.finalizeParsing()
             DispatchQueue.main.async {
                 let realm = try! Realm()
 
