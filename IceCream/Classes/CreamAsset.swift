@@ -36,7 +36,7 @@ public class CreamAsset: Object {
     /// So use this method if you want get the data of this object
     public func storedData() -> Data? {
         let filePath = CreamAsset.creamAssetDefaultURL().appendingPathComponent(uniqueFileName)
-        return try! Data(contentsOf: filePath)
+        return try? Data(contentsOf: filePath)
     }
     
     func save(data: Data, to path: String) {
