@@ -28,16 +28,21 @@ public final class SyncEngine {
     /// For more, reference is here: https://realm.io/docs/swift/latest/#notifications
     private var notificationToken: NotificationToken?
 
-    /// Indicates the private database in default container
-    private let privateDatabase = CKContainer.default().privateCloudDatabase
+  private let container: CKContainer!
+  private let privateDatabase: CKDatabase!
     
     private let errorHandler = ErrorHandler()
     
     private let syncObjects: [Syncable]
     
     /// We recommend processing the initialization when app launches
-    public init(objects: [Syncable]) {
-        self.syncObjects = objects
+    public init(objects: [Syncable], container: CKContainer = CKContainer.default())   {
+      self.syncObjects = objects
+
+      self.container = container
+      self.privateDatabase = container.privateCloudDatabase
+
+      self.privateDatabase = database
         for syncObject in syncObjects {
             syncObject.pipeToEngine = { [weak self] recordsToStore, recordIDsToDelete in
                 guard let `self` = self else { return }
@@ -46,7 +51,7 @@ public final class SyncEngine {
         }
         
         /// Check iCloud status so that we can go on
-        CKContainer.default().accountStatus { [weak self] (status, error) in
+        container.accountStatus { [weak self] (status, error) in
             guard let `self` = self else { return }
             if status == CKAccountStatus.available {
                 
@@ -313,17 +318,17 @@ extension SyncEngine {
     /// 3. Back to app again
     /// The operation resumes! All works like a magic!
     fileprivate func resumeLongLivedOperationIfPossible () {
-        CKContainer.default().fetchAllLongLivedOperationIDs { ( opeIDs, error) in
+        container.fetchAllLongLivedOperationIDs { ( opeIDs, error) in
             guard error == nil else { return }
             guard let ids = opeIDs else { return }
             for id in ids {
-                CKContainer.default().fetchLongLivedOperation(withID: id, completionHandler: { (ope, error) in
+                self.container.fetchLongLivedOperation(withID: id, completionHandler: { (ope, error) in
                     guard error == nil else { return }
                     if let modifyOp = ope as? CKModifyRecordsOperation {
                         modifyOp.modifyRecordsCompletionBlock = { (_,_,_) in
                             print("Resume modify records success!")
                         }
-                        CKContainer.default().add(modifyOp)
+                        self.container.add(modifyOp)
                     }
                 })
             }
