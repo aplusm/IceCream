@@ -42,7 +42,6 @@ public final class SyncEngine {
       self.container = container
       self.privateDatabase = container.privateCloudDatabase
 
-      self.privateDatabase = database
         for syncObject in syncObjects {
             syncObject.pipeToEngine = { [weak self] recordsToStore, recordIDsToDelete in
                 guard let `self` = self else { return }
