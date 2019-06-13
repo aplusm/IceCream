@@ -9,7 +9,7 @@ import CloudKit
 import RealmSwift
 
 public protocol CKRecordRecoverable {
-    
+  func finalize(_ realm: Realm)
 }
 
 extension CKRecordRecoverable where Self: Object {
@@ -86,6 +86,7 @@ extension CKRecordRecoverable where Self: Object {
                 o.setValue(recordValue, forKey: prop.name)
             }
         }
+        o.finalize(realm)
         return o
     }
     
