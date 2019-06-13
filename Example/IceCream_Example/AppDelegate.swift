@@ -14,15 +14,24 @@ import CloudKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var syncEngine: SyncEngine<Dog>?
+    var syncEngine: SyncEngine?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        syncEngine = SyncEngine<Dog>()
+        syncEngine = SyncEngine(objects: [
+            SyncObject<Person>(),
+            SyncObject<Dog>(),
+            SyncObject<Cat>()
+            ])
+      
+        /// If you wanna test public Database, comment the above syncEngine code and uncomment the following one
+        /// Besides, uncomment Line 26 to 28 in Person.swift file
+//        syncEngine = SyncEngine(objects: [SyncObject<Person>()], databaseScope: .public)
+      
         application.registerForRemoteNotifications()
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UINavigationController(rootViewController: ViewController())
+        window?.rootViewController = TabBarViewController()
         window?.makeKeyAndVisible()
         return true
     }
@@ -32,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let dict = userInfo as! [String: NSObject]
         let notification = CKNotification(fromRemoteNotificationDictionary: dict)
         
-        if (notification.subscriptionID == IceCreamConstant.cloudKitSubscriptionID) {
+        if let subscriptionID = notification.subscriptionID, IceCreamSubscription.allIDs.contains(subscriptionID) {
              NotificationCenter.default.post(name: Notifications.cloudKitDataDidChangeRemotely.name, object: nil, userInfo: userInfo)
         }
         completionHandler(.newData)

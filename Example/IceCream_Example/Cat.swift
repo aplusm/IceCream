@@ -1,9 +1,9 @@
 //
-//  Dog.swift
+//  Cat.swift
 //  IceCream_Example
 //
-//  Created by 蔡越 on 23/10/2017.
-//  Copyright © 2017 CocoaPods. All rights reserved.
+//  Created by 蔡越 on 22/05/2018.
+//  Copyright © 2018 蔡越. All rights reserved.
 //
 
 import Foundation
@@ -11,27 +11,24 @@ import RealmSwift
 import IceCream
 import CloudKit
 
-class Dog: Object {
+class Cat: Object {
     @objc dynamic var id = NSUUID().uuidString
     @objc dynamic var name = ""
     @objc dynamic var age = 0
     @objc dynamic var isDeleted = false
-
+    
     static let AVATAR_KEY = "avatar"
     @objc dynamic var avatar: CreamAsset?
-    
-    // Relationships usage in Realm: https://realm.io/docs/swift/latest/#relationships
-    @objc dynamic var owner: Person? // to-one relationships must be optional
     
     override class func primaryKey() -> String? {
         return "id"
     }
 }
 
-extension Dog: CKRecordConvertible {
+extension Cat: CKRecordRecoverable {
     
 }
 
-extension Dog: CKRecordRecoverable {
+extension Cat: CKRecordConvertible {
     
 }

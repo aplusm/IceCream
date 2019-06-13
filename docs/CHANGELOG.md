@@ -1,7 +1,117 @@
 # Change Log
 
+## [1.9.0 - Make It Public](https://github.com/caiyue1993/IceCream/releases/tag/1.9.0)
+
+#### Add
+
+* Add support for public database [124](https://github.com/caiyue1993/IceCream/pull/124)
+
+## [1.8.0 - Customization](https://github.com/caiyue1993/IceCream/releases/tag/1.8.0)
+
+#### Add
+
+* Add a option to let developer choose whether to overwrite existing CreamAsset file(the default choice is `true`) [#103](https://github.com/caiyue1993/IceCream/pull/103)
+* Add support for custom CKContainers [#104](https://github.com/caiyue1993/IceCream/pull/104)
+* Add support for custom Realm [#108](https://github.com/caiyue1993/IceCream/pull/108)
+
+#### Fix
+
+* Fix the conversion issue of recordID to Int type primaryKey [#111](https://github.com/caiyue1993/IceCream/pull/111)
+
+## [1.7.2 - Realm List of Basic Types](https://github.com/caiyue1993/IceCream/releases/tag/1.7.2)
+
+#### Add
+
+* Add support for Lists of basic types [#98](https://github.com/caiyue1993/IceCream/pull/98)
+
+#### Fix 
+
+* Fix a crash when new no-optional property added [#92](https://github.com/caiyue1993/IceCream/pull/92)
+* Avoid force unwrapping `storedData` [#101](https://github.com/caiyue1993/IceCream/pull/101)
+
+## [1.7.1 - Optimizations](https://github.com/caiyue1993/IceCream/releases/tag/1.7.1)
+
+#### Add
+
+* Add `pushAll` method. 
+* change method name `sync` to `pull`. 
+
+#### Fix 
+
+* Fetch changes on the non-main thread.
+* Move registerLocalDatabase to completion block of createCustomZones.
+* Fix `isCustomZoneCreated` setter logic.
+* More Swift 4.2 and optimize code style.
+
 -----
-## [1.3.0 - Decentralized is the Future]
+## 1.7.0 - Swift 4.2
+
+#### Add
+
+* Xcode 10 / Swift 4.2 support
+
+-----
+## [1.6.0 - Get me on every Apple platform](https://github.com/caiyue1993/IceCream/releases/tag/1.6.0)
+
+#### Add
+
+* Adding support for macOS, tvOS and watchOS. [#79](https://github.com/caiyue1993/IceCream/pull/79),[#85](https://github.com/caiyue1993/IceCream/pull/85)
+
+-----
+## [1.5.0 - Dog has an Owner](https://github.com/caiyue1993/IceCream/releases/tag/1.5.0)
+
+#### Add
+
+* Many-to-one relationship support. [#74](https://github.com/caiyue1993/IceCream/pull/74)
+
+#### Fix
+
+* Carthage nested dependency issue. [#71](https://github.com/caiyue1993/IceCream/pull/71)
+
+-----
+## [1.4.2](https://github.com/caiyue1993/IceCream/releases/tag/1.4.2)
+
+#### Add
+
+* Expose file path in CreamAsset. [#66](https://github.com/caiyue1993/IceCream/pull/66) 
+
+-----
+## [1.4.1](https://github.com/caiyue1993/IceCream/releases/tag/1.4.1)
+
+#### Fix
+
+* Fix the folder file issue. [#60](https://github.com/caiyue1993/IceCream/pull/60) 
+
+-----
+## [1.4.0 - Dogs and Cats](https://github.com/caiyue1993/IceCream/releases/tag/1.4.0)
+
+#### Add
+
+* Multiple object models support. [#55](https://github.com/caiyue1993/IceCream/pull/55) 
+
+-----
+## [1.3.3](https://github.com/caiyue1993/IceCream/releases/tag/1.3.3)
+
+#### Fix 
+
+* Change the deployment target via Carthage. [#50](https://github.com/caiyue1993/IceCream/pull/50) 
+
+-----
+## [1.3.2 - Faster](https://github.com/caiyue1993/IceCream/releases/tag/1.3.2)
+
+#### Fix 
+
+* Static Framework Support. [#47](https://github.com/caiyue1993/IceCream/pull/47) 
+
+-----
+## [1.3.1 - Lean Code](https://github.com/caiyue1993/IceCream/releases/tag/1.3.1)
+
+#### Fix 
+
+* Use where clause to refactor code. [#46](https://github.com/caiyue1993/IceCream/pull/46) 
+
+-----
+## [1.3.0 - Decentralized is the Future](https://github.com/caiyue1993/IceCream/releases/tag/1.3.0)
 
 #### Add
 
@@ -9,10 +119,10 @@
 
 #### Fix 
 
-* CreamAsset behaves better. [32](https://github.com/caiyue1993/IceCream/pull/32) 
+* CreamAsset behaves better. [#32](https://github.com/caiyue1993/IceCream/pull/32) 
 
 -----
-## [1.2.1 - Make yourself at home]
+## [1.2.1 - Make yourself at home](https://github.com/caiyue1993/IceCream/releases/tag/1.2.1)
 
 #### Add
 

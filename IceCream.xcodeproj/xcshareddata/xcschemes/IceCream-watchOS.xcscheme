@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0940"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6743F711202B0F0F00912163"
+               BlueprintIdentifier = "67478141213BCE46005C132B"
                BuildableName = "IceCream.framework"
-               BlueprintName = "IceCream"
+               BlueprintName = "IceCream-watchOS"
                ReferencedContainer = "container:IceCream.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6743F711202B0F0F00912163"
+            BlueprintIdentifier = "67478141213BCE46005C132B"
             BuildableName = "IceCream.framework"
-            BlueprintName = "IceCream"
+            BlueprintName = "IceCream-watchOS"
             ReferencedContainer = "container:IceCream.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6743F711202B0F0F00912163"
+            BlueprintIdentifier = "67478141213BCE46005C132B"
             BuildableName = "IceCream.framework"
-            BlueprintName = "IceCream"
+            BlueprintName = "IceCream-watchOS"
             ReferencedContainer = "container:IceCream.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
