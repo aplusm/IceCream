@@ -86,6 +86,7 @@ extension CKRecordRecoverable where Self: Object {
                 o.setValue(recordValue, forKey: prop.name)
             }
         }
+        print("will finalize object")
         o.finalize(realm)
         return o
     }
