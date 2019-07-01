@@ -31,6 +31,18 @@ public class CreamAsset: Object {
         save(data: data, to: uniqueFileName, shouldOverwrite: shouldOverwrite)
     }
 
+  private convenience init?(objectID: String, propName: String, localURL: URL) {
+    guard let data = try? Data(contentsOf: localURL) else { return nil }
+
+    self.init()
+    self.data = data
+    self.uniqueFileName = "\(objectID)_\(propName)"
+
+    //Move localURL to filePath (defined by uniqueFileName)
+    try? FileManager.default.removeItem(at: filePath)
+    try? FileManager.default.moveItem(at: localURL, to: filePath)
+  }
+
     private convenience init?(objectID: String, propName: String, url: URL) {
         guard let data = try? Data(contentsOf: url) else { return nil }
         self.init(objectID: objectID, propName: propName, data: data)
@@ -73,7 +85,7 @@ public class CreamAsset: Object {
     ///   - asset: The CKAsset where we will pull the URL for creating the asset
     /// - Returns: A CreamAsset if it was successful
     static func parse(from propName: String, record: CKRecord, asset: CKAsset) -> CreamAsset? {
-        return CreamAsset(objectID: record.recordID.recordName, propName: propName, url: asset.fileURL)
+        return CreamAsset(objectID: record.recordID.recordName, propName: propName, localURL: asset.fileURL)
     }
 
     /// Creates a new CreamAsset for the given object with Data
