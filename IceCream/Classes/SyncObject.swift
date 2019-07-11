@@ -72,6 +72,16 @@ extension SyncObject: Syncable {
     
     public func add(record: CKRecord) {
         DispatchQueue.main.async {
+          //1. Check if an existing object already exists.
+          let primaryKey = T.primaryKeyForRecordID(recordID: record.recordID)
+          if let existing = self.realm.objectsFor(primaryKey) {
+            //A local object already exists.
+            guard existing.canMerge(record) else {
+              print("Cannot merge record !")
+              return
+            }
+          }
+
             guard let object = T.parseFromRecord(record: record, realm: self.realm) else {
                 print("There is something wrong with the converson from cloud record to local object")
                 return
