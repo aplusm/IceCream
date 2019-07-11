@@ -74,7 +74,7 @@ extension SyncObject: Syncable {
         DispatchQueue.main.async {
           //1. Check if an existing object already exists.
           let primaryKey = T.primaryKeyForRecordID(recordID: record.recordID)
-          if let existing = self.realm.objectsFor(primaryKey) {
+          if let existing = self.realm.object(ofType: T.self, forPrimaryKey: primaryKey) {
             //A local object already exists.
             guard existing.canMerge(record) else {
               print("Cannot merge record !")

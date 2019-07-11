@@ -10,7 +10,7 @@ import RealmSwift
 
 public protocol CKRecordRecoverable {
   func finalize(_ realm: Realm)
-  func canMerge(record: CKRecord) -> Bool
+  func canMerge(_ record: CKRecord) -> Bool
 }
 
 extension CKRecordRecoverable where Self: Object {
